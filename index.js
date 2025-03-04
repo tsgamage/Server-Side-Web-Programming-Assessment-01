@@ -59,14 +59,15 @@ let insertResult
       );
       
     console.log("Inserted customer data: ", insertResult.rows[0]);
-
+    res.status(201);
     res.send({
       message: `Customer ${insertResult.rows[0].name} registered successfully`,
       customertId: insertResult.rows[0].id,
     });
 } catch (error) {
-    console.error("Error while inserting data: ", error);
-    res.send("Error while inserting data");
+    console.log("Error while inserting data: ", error);
+    res.status(400);
+    res.send("Bad Request");
 }
 // console.log(
     //   "Received customer registration request:",
