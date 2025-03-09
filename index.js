@@ -21,6 +21,8 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(express.json())
+
 app.get("/", (req, res) => {
   res.send("Hello Princess");
 });
@@ -38,6 +40,8 @@ app.post("/customers/register", async (req, res) => {
     expireDate,
     cvv,
   } = req.body;
+
+  console.log(name, address, email, dateOfBirth, gender, age, cardHolderName, cardNumber, expireDate, cvv);
 
   let insertResult;
 
